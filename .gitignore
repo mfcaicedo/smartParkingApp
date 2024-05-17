@@ -21,6 +21,8 @@ android/app/release/
 android/app/debug/
 android/app/.cxx/
 
+.env
+
 # Application Output
 *.apk
 *.aab

@@ -12,11 +12,11 @@ import {
   StatusBar,
   useColorScheme,
 } from 'react-native';
-import {Colors} from 'react-native/Libraries/NewAppScreen';
-import {config} from '@gluestack-ui/config';
-import {GluestackUIProvider, Box, Text, Image} from '@gluestack-ui/themed';
+import { Colors } from 'react-native/Libraries/NewAppScreen';
+import { config } from '@gluestack-ui/config';
+import { GluestackUIProvider, Box, Text, Image } from '@gluestack-ui/themed';
 
-const FeatureCard = ({iconSvg, name, desc}: any) => {
+const FeatureCard = ({ iconSvg, name, desc }: any) => {
   return (
     <Box
       flexDirection="column"
@@ -94,9 +94,7 @@ const Container = () => {
           >
             {/* <Image src="/logo.svg" fill alt="logo" priority /> */}
           </Box>
-          <Box
-            $base-flexDirection="column" $md-flexDirection="row"
-          >
+          <Box $base-flexDirection="column" $md-flexDirection="row">
             <FeatureCard
               iconSvg={documentImage}
               name="Docs"
