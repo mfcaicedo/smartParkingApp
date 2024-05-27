@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import {
     GluestackUIProvider,
@@ -14,11 +14,37 @@ import {
     AlertCircleIcon,
     FormControlErrorText,
     ButtonText,
+    Toast,
+    useToast,
+    ToastTitle,
+    VStack,
+    ToastDescription
 } from '@gluestack-ui/themed';
 import { config } from '@gluestack-ui/config';
+import { FIREBASE_AUTH } from '../../config/firebase';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { Alert } from 'react-native';
 const logoUnicauca = require('../../../assets/logo-unicauca.png');
 
 const Login = ({ navigation }: { navigation: any }) => {
+
+    const [email, setEmail] = useState<string>('');
+    const [password, setPassword] = useState<string>('');
+
+    const handleLogin = async () => {
+        try {
+
+            const user = await signInWithEmailAndPassword(FIREBASE_AUTH, email, password);
+            // console.log("user", user);
+            navigation.navigate('Home');
+            Alert.alert('Bienvenido', 'Inicio de sesión exitoso');
+
+        } catch (error: any) {
+            // console.error("error: ", error);
+            Alert.alert('Error', 'Usuario o contraseña incorrectos');
+        }
+    };
+
     return (
         <GluestackUIProvider config={config}>
             <Box
@@ -31,8 +57,11 @@ const Login = ({ navigation }: { navigation: any }) => {
                     size="xl"
                     $xs-borderRadius="$sm"
                     source={logoUnicauca}
-                    alt="GesApp"
+                    alt="logoUnicauca"
                     my="$10"
+                    resizeMode='contain'
+                    w='$full'
+                    h='$64'
                 />
                 <Box justifyContent="center" alignContent="center" gap="$7">
                     <Heading bold size="2xl" alignSelf="flex-start">
@@ -49,6 +78,8 @@ const Login = ({ navigation }: { navigation: any }) => {
                         <Input variant="underlined" >
                             <InputField
                                 type="text"
+                                value={email}
+                                onChangeText={(text) => setEmail(text)}
                                 defaultValue=""
                                 placeholder="Usuario o correo"
                             />
@@ -66,6 +97,8 @@ const Login = ({ navigation }: { navigation: any }) => {
                         <Input variant="underlined">
                             <InputField
                                 type="password"
+                                value={password}
+                                onChangeText={(text) => setPassword(text)}
                                 defaultValue=""
                                 placeholder="Contraseña"
                             />
@@ -79,7 +112,7 @@ const Login = ({ navigation }: { navigation: any }) => {
                     </FormControl>
                     <Button
                         onPress={() => {
-                            navigation.navigate('CreateAccount');
+                            handleLogin();
                         }}
                         size="md"
                         mt="$2"
