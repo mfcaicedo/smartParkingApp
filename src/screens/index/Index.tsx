@@ -102,7 +102,7 @@ const Index = ({ navigation }: { navigation: any }) => {
                                 alt="icono Humanas"
                                 resizeMode='contain'
                                 w='$24'
-                                h='$24'
+                                h='$24'  
                             />
                         </Box>
                         <Box flex={2}>
