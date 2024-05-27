@@ -4,6 +4,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Index from '../screens/index/Index';
 import Login from '../screens/login/Login';
 import Welcome from '../screens/welcome/Welcome';
+import FietMap from '../screens/parking-maps/FietMap';
 const Stack = createNativeStackNavigator();
 
 const NavigationApp = () => {
@@ -24,6 +25,11 @@ const NavigationApp = () => {
                     name="Home"
                     component={Index}
                     options={{ title: 'Home' }}
+                />
+                <Stack.Screen
+                    name="FietMap"
+                    component={FietMap}
+                    options={{ title: 'FietMap' }}
                 />
             </Stack.Navigator>
         </NavigationContainer>

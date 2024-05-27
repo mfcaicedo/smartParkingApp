@@ -34,7 +34,7 @@ const Welcome = ({ navigation }: { navigation: any }) => {
                     </Box>
                 </Center>
                 <Button onPress={() => {
-                    navigation.navigate('Login')
+                    navigation.navigate('Home')
                 }}
                     size="md" mx='$5' variant="solid" bgColor='$primary500' action="primary" isDisabled={false} isFocusVisible={false} >
                     <ButtonText>Continuar</ButtonText>
