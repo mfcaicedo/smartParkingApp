@@ -81,6 +81,8 @@ const Login = ({ navigation }: { navigation: any }) => {
                                 onChangeText={(text) => setEmail(text)}
                                 defaultValue=""
                                 placeholder="Usuario o correo"
+                                autoCapitalize='none'
+                                keyboardType='email-address'
                             />
                         </Input>
                         <FormControlError>
@@ -100,6 +102,7 @@ const Login = ({ navigation }: { navigation: any }) => {
                                 onChangeText={(text) => setPassword(text)}
                                 defaultValue=""
                                 placeholder="Contraseña"
+                                autoCapitalize='none'
                             />
                         </Input>
                         <FormControlError>
