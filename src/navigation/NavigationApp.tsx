@@ -5,7 +5,7 @@ import Index from '../screens/index/Index';
 import Login from '../screens/login/Login';
 import Welcome from '../screens/welcome/Welcome';
 import FietMap from '../screens/parking-maps/FietMap';
-import { Button, ButtonIcon, ButtonText, GluestackUIProvider, MenuIcon } from '@gluestack-ui/themed';
+import { Button, ButtonIcon, ButtonText, GluestackUIProvider, MenuIcon, useTheme } from '@gluestack-ui/themed';
 import { config } from '@gluestack-ui/config';
 const Stack = createNativeStackNavigator();
 
@@ -23,7 +23,7 @@ const NavigationApp = () => {
                     isFocusVisible={false}
                     onPress={() => console.log('menu')}
                 >
-                    <ButtonIcon color='$black' as={MenuIcon} />
+                    <ButtonIcon color='$white' as={MenuIcon} />
                 </Button>
             </GluestackUIProvider>
         );
@@ -50,13 +50,23 @@ const NavigationApp = () => {
                             title: 'Home',
                             headerBackVisible: false,
                             headerLeft: () => <CustomHeaderMenu navigation={Stack.Navigator} />,
+                            headerStyle: {
+                                backgroundColor: '#0077E6',
+                            },
+                            headerTintColor: '#ffffff',
                         }
                     }
                 />
                 <Stack.Screen
                     name="FietMap"
                     component={FietMap}
-                    options={{ title: 'Parqueadero FIET' }}
+                    options={{
+                        title: 'Parqueadero FIET',
+                        headerStyle: {
+                            backgroundColor: '#0077E6',
+                        },
+                        headerTintColor: '#ffffff',
+                    }}
                 />
             </Stack.Navigator>
         </NavigationContainer>
