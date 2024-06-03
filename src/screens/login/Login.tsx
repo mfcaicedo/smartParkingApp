@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import {
     GluestackUIProvider,
@@ -18,7 +18,8 @@ import {
     useToast,
     ToastTitle,
     VStack,
-    ToastDescription
+    ToastDescription,
+    onChange
 } from '@gluestack-ui/themed';
 import { config } from '@gluestack-ui/config';
 import { FIREBASE_AUTH } from '../../config/firebase';
@@ -35,12 +36,10 @@ const Login = ({ navigation }: { navigation: any }) => {
         try {
 
             const user = await signInWithEmailAndPassword(FIREBASE_AUTH, email, password);
-            // console.log("user", user);
             navigation.navigate('Home');
             Alert.alert('Bienvenido', 'Inicio de sesión exitoso');
 
         } catch (error: any) {
-            // console.error("error: ", error);
             Alert.alert('Error', 'Usuario o contraseña incorrectos');
         }
     };

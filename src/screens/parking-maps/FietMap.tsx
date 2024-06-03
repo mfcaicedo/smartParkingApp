@@ -47,13 +47,12 @@ const FietMap = ({ navigation }: { navigation: any }) => {
 
     //Consumo servicio de thinkSpeak 
     const getStatusParkingSpots = async () => {
-        console.log("si llegó");
+        
         try {
-            const response = await fetch('https://api.thingspeak.com/channels/2567148/feeds.json?api_key=7M9DZZ7W7A0OYF2U&results=1');
-            const data = await response.json();
-            console.log(data);
-            console.log("hee ", data.feeds[0].field1);
 
+            const response = await fetch('https://api.thingspeak.com/channels/2567148/feeds.json?api_key=7M9DZZ7W7A0OYF2U&results=1');
+
+            const data = await response.json();
             const updatedSpots = parkingSpots.map((spot, index) => {
                 if (index === 0) {
                     return {
@@ -67,20 +66,13 @@ const FietMap = ({ navigation }: { navigation: any }) => {
 
             setParkingSpots(updatedSpots);
 
-            // if (parseInt(data.feeds[0].field1) === 1) {
-            //     console.log("entra");
-            //     parkingSpots[0].status = ParkingSpotStatus.OCCUPIED;
-            // } else {
-            //     parkingSpots[0].status = ParkingSpotStatus.FREE;
-            // }
-            console.log("el parqueadero esta: ", parkingSpots);
         } catch (error) {
             console.error(error);
         }
     }
 
     useEffect(() => {
-        console.log("holi");
+
         getStatusParkingSpots();
 
         const intervalId = setInterval(getStatusParkingSpots, 30000);
@@ -90,11 +82,11 @@ const FietMap = ({ navigation }: { navigation: any }) => {
 
     return (
         <GluestackUIProvider config={config} >
-            <VStack style={styles.container}>
-                <Box pb='$2'>
+            <VStack justifyContent='center' alignItems='center' h='$full' bg='$coolGray200'>
+                <Box>
                     <Button
                         size="md"
-                        variant="outline"
+                        variant="link"
                         action="secondary"
                         isDisabled={false}
                         isFocusVisible={false}
@@ -105,14 +97,14 @@ const FietMap = ({ navigation }: { navigation: any }) => {
                 <HStack style={styles.parkingContainer}>
                     <VStack style={styles.side}>
                         {parkingSpots.slice(0, 8).map(spot => (
-                            <Box key={spot.id} style={styles.parkingSpot}>
+                            <Box m='$1' bg='$white' key={spot.id} style={styles.parkingSpot}>
                                 <Text style={spot.status === ParkingSpotStatus.FREE ? styles.free : styles.occupied}>
                                     {spot.status}
                                 </Text>
                             </Box>
                         ))}
                     </VStack>
-                    <Box justifyContent='center' bg='$trueGray400' >
+                    <Box my='$1' justifyContent='center' bg='$coolGray500' >
                         <HStack space='2xl' p='$8' reversed={false}>
                             <Text color='$white' size='5xl' bold>↑</Text>
                             <Text color='$white' size='5xl' bold>↓</Text>
@@ -120,7 +112,7 @@ const FietMap = ({ navigation }: { navigation: any }) => {
                     </Box>
                     <VStack>
                         {parkingSpots.slice(8).map(spot => (
-                            <Box key={spot.id} style={styles.parkingSpot}>
+                            <Box m='$1' bg='$white' key={spot.id} style={styles.parkingSpot}>
                                 <Text style={spot.status === 'Libre' ? styles.free : styles.occupied}>{spot.status}</Text>
                             </Box>
                         ))}
@@ -129,7 +121,7 @@ const FietMap = ({ navigation }: { navigation: any }) => {
                 <Box pt='$2'>
                     <Button
                         size="md"
-                        variant="outline"
+                        variant="link"
                         action="secondary"
                         isDisabled={false}
                         isFocusVisible={false}
@@ -148,7 +140,6 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        padding: 10,
     },
     signBox: {
         margin: 10,
@@ -174,14 +165,6 @@ const styles = StyleSheet.create({
         borderColor: 'black',
         justifyContent: 'center',
         alignItems: 'center',
-        margin: 5,
-    },
-    street: {
-        width: 50,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: 'grey',
-        margin: 5,
     },
     arrow: {
         fontSize: 30,

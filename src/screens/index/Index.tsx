@@ -30,7 +30,7 @@ const Index = ({ navigation }: { navigation: any }) => {
 
     return (
         <GluestackUIProvider config={config} >
-            <Box justifyContent="space-between" h="$full" p='$5' gap='$3' w='$full'>
+            <Box bg='$coolGray100' justifyContent="space-between" h="$full" p='$5' gap='$3' w='$full'>
                 <Heading bold size="xl" >¡Selecciona el parqueadero perfecto para ti!</Heading>
                 <TouchableOpacity onPress={handlePressFiet}>
                     <Card size="lg" justifyContent='center' alignItems='center' flexDirection='row'
