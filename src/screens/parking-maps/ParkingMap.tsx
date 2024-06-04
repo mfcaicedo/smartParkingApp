@@ -90,8 +90,8 @@ const ParkingMap = ({ navigation }: { navigation: any }) => {
                         latitudeDelta: 0.0922,
                         longitudeDelta: 0.0421,
                     }}
-                // followsUserLocation={true}
-                // showsUserLocation={true}
+                    // followsUserLocation={true}
+                    // showsUserLocation={true}
                 >
                     <Marker
                         draggable
