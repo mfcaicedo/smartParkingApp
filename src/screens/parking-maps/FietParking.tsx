@@ -24,7 +24,7 @@ enum ParkingSpotStatus {
     OCCUPIED = 'Ocupado',
 }
 
-const FietMap = ({ navigation }: { navigation: any }) => {
+const FietParking = ({ navigation }: { navigation: any }) => {
 
     const [parkingSpots, setParkingSpots] = useState([
         { id: 2567148, status: ParkingSpotStatus.FREE }, // Es el espacio de parqueo que está conectado a thinkSpeak
@@ -125,6 +125,7 @@ const FietMap = ({ navigation }: { navigation: any }) => {
                         action="secondary"
                         isDisabled={false}
                         isFocusVisible={false}
+                        onPress={() => navigation.navigate('ParkingMap')}
                     >
                         <ButtonText>Salida</ButtonText>
                     </Button>
@@ -134,6 +135,8 @@ const FietMap = ({ navigation }: { navigation: any }) => {
         </GluestackUIProvider>
     )
 }
+
+export default FietParking;
 
 const styles = StyleSheet.create({
     container: {
@@ -179,5 +182,3 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
     },
 });
-
-export default FietMap;

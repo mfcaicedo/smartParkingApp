@@ -4,9 +4,10 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Index from '../screens/index/Index';
 import Login from '../screens/login/Login';
 import Welcome from '../screens/welcome/Welcome';
-import FietMap from '../screens/parking-maps/FietMap';
+import FietParking from '../screens/parking-maps/FietParking';
 import { Button, ButtonIcon, ButtonText, GluestackUIProvider, MenuIcon, useTheme } from '@gluestack-ui/themed';
 import { config } from '@gluestack-ui/config';
+import ParkingMap from '../screens/parking-maps/ParkingMap';
 const Stack = createNativeStackNavigator();
 
 const NavigationApp = () => {
@@ -59,9 +60,20 @@ const NavigationApp = () => {
                 />
                 <Stack.Screen
                     name="FietMap"
-                    component={FietMap}
+                    component={FietParking}
                     options={{
                         title: 'Parqueadero FIET',
+                        headerStyle: {
+                            backgroundColor: '#0077E6',
+                        },
+                        headerTintColor: '#ffffff',
+                    }}
+                />
+                <Stack.Screen
+                    name="ParkingMap"
+                    component={ParkingMap}
+                    options={{
+                        title: 'Mapa',
                         headerStyle: {
                             backgroundColor: '#0077E6',
                         },
