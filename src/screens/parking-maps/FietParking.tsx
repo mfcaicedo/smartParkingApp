@@ -3,18 +3,10 @@ import {
     GluestackUIProvider,
     Text,
     Box,
-    Center,
     Button,
     ButtonText,
-    Image,
-    Heading,
     VStack,
     HStack,
-    ButtonIcon,
-    AddIcon,
-    ArrowUpIcon,
-    ArrowDownIcon,
-    Divider
 } from '@gluestack-ui/themed';
 import { config } from "@gluestack-ui/config";
 import { StyleSheet } from 'react-native';
@@ -30,9 +22,9 @@ const FietParking = ({ navigation }: { navigation: any }) => {
     const [parkingSpots, setParkingSpots] = useState([
         { id: 2567148, position: 1, status: ParkingSpotStatus.FREE }, // Es el espacio de parqueo que está conectado a thinkSpeak
         { id: 2, position: 2, status: ParkingSpotStatus.FREE },
-        { id: 3, position: 3, status: ParkingSpotStatus.RESERVED },
-        { id: 4, position: 4, status: ParkingSpotStatus.FREE },
-        { id: 5, position: 5, status: ParkingSpotStatus.FREE },
+        { id: 3, position: 3, status: ParkingSpotStatus.OCCUPIED },
+        { id: 4, position: 4, status: ParkingSpotStatus.OCCUPIED },
+        { id: 5, position: 5, status: ParkingSpotStatus.OCCUPIED },
         { id: 6, position: 6, status: ParkingSpotStatus.FREE },
         { id: 7, position: 7, status: ParkingSpotStatus.FREE },
         { id: 8, position: 8, status: ParkingSpotStatus.FREE },
